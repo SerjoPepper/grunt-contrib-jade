@@ -106,7 +106,7 @@ module.exports = function(grunt) {
             output.unshift('var jade = jade || require(\'jade\').runtime;');
 
             var nodeExport = 'if (typeof exports === \'object\' && exports) {';
-            nodeExport += 'module.exports = ' + nsInfo.namespace + ';}';
+            nodeExport += 'module.exports = ' + nsInfo.namespace + '[' + JSON.stringify(filename) + '];}';
 
             output.push(nodeExport);
           }
