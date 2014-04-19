@@ -89,7 +89,7 @@ module.exports = function(grunt) {
         }
 
         if (options.client && options.namespace !== false) {
-          templates.push(nsInfo.namespace + '[' + JSON.stringify(filename) + '] = ' + compiled + ';');
+          templates.push(nsInfo.namespace + '[' + JSON.stringify(filename) + '] = module.exports = ' + compiled + ';');
         } else {
           templates.push(compiled);
         }
@@ -105,10 +105,10 @@ module.exports = function(grunt) {
           if (options.node) {
             output.unshift('var jade = jade || require(\'jade\').runtime;');
 
-            var nodeExport = 'if (typeof exports === \'object\' && exports) {';
-            nodeExport += 'module.exports = ' + nsInfo.namespace + '[' + JSON.stringify(filename) + '];}';
+            //var nodeExport = 'if (typeof exports === \'object\' && exports) {';
+            //nodeExport += 'module.exports = ' + nsInfo.namespace + '[' + JSON.stringify(filename) + '];}';
 
-            output.push(nodeExport);
+            //output.push(nodeExport);
           }
         }
 
